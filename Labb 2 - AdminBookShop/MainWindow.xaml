@@ -1,0 +1,90 @@
+﻿<Window x:Class="Labb_2___AdminBookShop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Labb_2___AdminBookShop"
+        xmlns:model="clr-namespace:Labb_2___AdminBookShop.Models"
+        mc:Ignorable="d"
+        Title="Bookshop" Height="500" Width="800" Icon="Resources/Book.ico">
+
+    <Grid Margin="10">
+        <!-- Grid Definition -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Inventory List -->
+        <GroupBox Header="Inventory" Grid.Column="0" Margin="5">
+            <Grid>
+                <DataGrid x:Name="InventoryGrid" 
+                          AutoGenerateColumns="False" 
+                          IsReadOnly="True"
+                          SelectionUnit="FullRow"
+                          SelectionMode="Single">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Store Name" Binding="{Binding StoreName}" Width="3*" />
+                        <DataGridTextColumn Header="Book Title" Binding="{Binding BookTitle}" Width="4*" />
+                        <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </GroupBox>
+
+        <!-- Functions to add and remove books from stores -->
+        <GroupBox Header="Manage Inventory" Grid.Column="1" Margin="5">
+            <StackPanel>
+                <!-- Select store -->
+                <TextBlock Text="Select Store:" Margin="0,10,0,5"/>
+                <ComboBox x:Name="StoreSelector"
+                          SelectionChanged="StoreSelector_SelectionChanged"
+                          DisplayMemberPath="StoreName"
+                          SelectedValuePath="Id"
+                          />
+
+
+                <!-- Select book -->
+                <TextBlock Text="Select Book:" Margin="0,10,0,5"/>
+                <ComboBox x:Name="BookSelector"
+                          SelectionChanged="BookSelector_SelectionChanged"    
+                          DisplayMemberPath="Title"
+                          SelectedValuePath="Isbn13" />
+
+                <!-- Empty Selection button -->
+                <Button Content="Empty Selection"  
+                        Margin="0,10,0,5" Width="100"
+                        Click="EmptySelection_Click"/>
+
+                <!-- Enter quantity -->
+                <TextBlock Text="Quantity:" Margin="0,10,0,5"/>
+                <TextBox x:Name="QuantityTextBox" Width="120" />
+
+                <!-- Add button -->
+                <Button Content="Add to Store"  
+                        Margin="0,10,0,5" Width="120"
+                        Click="AddToStore_Click"/>
+
+                <!-- Remove button -->
+                <Button Content="Remove from Store"  
+                        Margin="0,10,0,5" Width="120"
+                        Click="RemoveFromStore_Click"/>
+
+                <!-- Inventory Overview button -->
+                <Button Content="Inventory Overview"  
+                        Margin="0,40,0,5" Width="120" Height="50"
+                        Click="InventoryOverview_Click"/>
+            </StackPanel>
+        </GroupBox>
+
+        <!-- Footer for statusmessages -->
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
+                   Foreground="Gray" 
+                   HorizontalAlignment="Center" 
+                   Margin="0,10,0,0"/>
+    </Grid>
+</Window>
