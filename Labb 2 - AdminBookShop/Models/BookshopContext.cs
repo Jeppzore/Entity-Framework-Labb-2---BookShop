@@ -29,7 +29,6 @@ public partial class BookshopContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Ignore<CustomerPoint>();
 
         // Author
         modelBuilder.Entity<Author>(entity =>

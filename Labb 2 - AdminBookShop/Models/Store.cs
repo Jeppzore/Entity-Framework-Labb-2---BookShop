@@ -16,5 +16,4 @@ public partial class Store
 
     public virtual ICollection<Inventory> Inventories { get; set; } = new List<Inventory>();
 
-    public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
 }

@@ -18,7 +18,5 @@ public partial class Book
 
     public virtual ICollection<Inventory> Inventories { get; set; } = new List<Inventory>();
 
-    public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
-
     public virtual ICollection<Author> Authors { get; set; } = new List<Author>();
 }
