@@ -29,11 +29,9 @@ public partial class BookshopContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-
         modelBuilder.Ignore<CustomerPoint>();
 
         // Author
-
         modelBuilder.Entity<Author>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Author__70DAFC1487AD3AC8");
@@ -46,7 +44,6 @@ public partial class BookshopContext : DbContext
         });
 
         // Book
-
         modelBuilder.Entity<Book>(entity =>
         {
             entity.HasKey(e => e.Isbn13).HasName("PK__Books__3BF79E031DA11D8A");
@@ -88,7 +85,6 @@ public partial class BookshopContext : DbContext
         });
 
         // Inventory
-
         modelBuilder.Entity<Inventory>(entity =>
         {
             entity.HasKey(e => new { e.StoreId, e.Isbn }).HasName("PK__Inventor__183D890129AB1313");
@@ -112,7 +108,6 @@ public partial class BookshopContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Inventory_Store");
         });
-
         // Store
 
         modelBuilder.Entity<Store>(entity =>
@@ -127,8 +122,7 @@ public partial class BookshopContext : DbContext
             entity.Property(e => e.StreetAddress).HasMaxLength(200);
         });
 
-        OnModelCreatingPartial(modelBuilder);       
+        OnModelCreatingPartial(modelBuilder);
     }
-
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

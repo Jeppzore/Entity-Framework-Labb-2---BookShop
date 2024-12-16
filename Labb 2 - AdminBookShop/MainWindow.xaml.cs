@@ -1,6 +1,4 @@
 ﻿using Labb_2___AdminBookShop.Models;
-using System;
-using System.Linq;
 using System.Windows;
 
 namespace Labb_2___AdminBookShop
@@ -12,14 +10,11 @@ namespace Labb_2___AdminBookShop
         public MainWindow()
         {
             InitializeComponent();
+
             _context = new BookshopContext();
 
             LoadStores();
             LoadBooks();
-
-            //using var db = new BookshopContext();
-
-            //var store = db.Stores.ToList();
         }
 
         private void LoadStores()
