@@ -2,9 +2,17 @@
 
 To run the application, simply follow the steps below:
 
-1. Download and restore attached .BAK-file "Bookshop.BAK" in SQLServer using "localhost" as your server.
+1. Download and restore attached .BAK-file "Bookshop.BAK" in SQLServer.
 
-2. Build the repository project in Visual Studio and go to "Manage user Secrets" to create a secrets.json class that contains the following key: ["ConnectionString"] - which points to the server "localhost"
+2. Build the repository project in Visual Studio and go to "Manage user Secrets" to create a secrets.json class that contains the following key: ["ConnectionString"] - which points to your chosen server in SQLServer. Here's a template for how your secrets.json file should look like:
+
+{
+  "ConnectionString": "Server=Your_Server_Name;Initial Catalog=Your_Data_Base;Integrated Security=True;TrustServerCertificate=True"
+}
+
+Change "Your_Server_Name" with your chosen SQLServer.
+Change "Your_Data_Base" with the name of the database you want to connect to.
+
 
 See the following picture if you're unsure where to find "Manage User Secrets"
 ![image](https://github.com/user-attachments/assets/b2ab42b9-eb4d-4e11-be59-591e11da2222)
